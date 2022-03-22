@@ -1,1 +1,70 @@
-<p>signup works!</p>
+<form (ngSubmit)="f.valid && handleSubmit(f)" #f="ngForm">
+  <div>
+    <div>
+      <label for="firstname">Prénom</label>
+      <input
+        type="text"
+        id="firstname"
+        [(ngModel)]="user.firstname"
+        name="firstname"
+        #firstname="ngModel"
+        required
+        minlength="3"
+        maxlength="15"
+      />
+    </div>
+    <div class="error" *ngIf="firstname.errors && f.submitted">
+      <span *ngIf="firstname.errors?.['required']">Prénom requis</span>
+      <span *ngIf="firstname.errors?.['minlength']"
+        >Le prénom doit comporter au moins 3 caractères</span
+      >
+      <span *ngIf="firstname.errors?.['maxlength']"
+        >Le prénom ne doit pas dépasser 15 caractères</span
+      >
+    </div>
+  </div>
+  <div>
+    <div>
+      <label for="name">Nom</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="user.name"
+        name="name"
+        #name="ngModel"
+        required
+        minlength="3"
+        maxlength="15"
+      />
+    </div>
+    <div class="error" *ngIf="name.errors && f.submitted">
+      <span *ngIf="name.errors?.['required']">Nom requis</span>
+      <span *ngIf="name.errors?.['minlength']"
+        >Le nom doit comporter au moins 3 caractères</span
+      >
+      <span *ngIf="name.errors?.['maxlength']"
+        >Le nom ne doit pas dépasser 15 caractères</span
+      >
+    </div>
+  </div>
+  <div>
+    <div>
+      <label for="mail">Email</label>
+      <input
+        name="mail"
+        type="text"
+        [(ngModel)]="user.mail"
+        #mail="ngModel"
+        required
+        email
+      />
+    </div>
+    <div class="error" *ngIf="mail.errors && f.submitted">
+      <span *ngIf="mail.errors?.['required']">Le champ email est requis</span>
+      <span *ngIf="mail.errors?.['email']"
+        >L'adresse email doit être valide</span
+      >
+    </div>
+  </div>
+  <button type="submit">Envoyer</button>
+</form>

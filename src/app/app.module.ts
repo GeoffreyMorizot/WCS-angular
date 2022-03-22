@@ -12,6 +12,7 @@ import { DisplayFilmDirective } from './display-film.directive';
 import { MenuComponent } from './menu/menu.component';
 import { SignupComponent } from './signup/signup.component';
 import { ROUTES } from './app.routes';
+import { MyFormComponent } from './my-form/my-form.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ROUTES } from './app.routes';
     DisplayFilmDirective,
     MenuComponent,
     SignupComponent,
+    MyFormComponent,
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(ROUTES)],
   providers: [],

@@ -1,0 +1,84 @@
+<form (ngSubmit)="myForm.valid && handleSubmit(myForm)" #myForm="ngForm">
+  <div>
+    <div>
+      {{ myForm.errors }}
+    </div>
+    <div>
+      <label for="title-order">Title</label>
+      <input
+        name="title-order"
+        type="text"
+        [(ngModel)]="model.title"
+        #title="ngModel"
+        required
+        minlength="5"
+        maxlength="30"
+      />
+    </div>
+    <div class="error" *ngIf="title.errors && myForm.submitted">
+      <span *ngIf="title.errors?.['required']">Le titre est requis</span>
+      <span *ngIf="title.errors?.['minlength']"
+        >La longueur minimale doit être supérieure à 5</span
+      >
+      <span *ngIf="title.errors?.['maxlength']"
+        >La longueur maximale doit être inférieure à 30</span
+      >
+    </div>
+  </div>
+  <div>
+    <div>
+      <label for="quantity-order">Quantité</label>
+      <input
+        name="quantity-order"
+        type="number"
+        [(ngModel)]="model.quantity"
+        #quantity="ngModel"
+        required
+      />
+    </div>
+    <div class="error" *ngIf="quantity.errors && myForm.submitted">
+      <span *ngIf="quantity.errors?.['required']"
+        >Le champ quantité est requis</span
+      >
+    </div>
+  </div>
+  <div>
+    <div>
+      <label for="date-order">Date de commande</label>
+      <input
+        name="date-order"
+        type="date"
+        [(ngModel)]="model.date"
+        #date="ngModel"
+        required
+      />
+    </div>
+    <div class="error" *ngIf="date.errors && myForm.submitted">
+      <span *ngIf="date.errors?.['required']">Le champ email est requis</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <label for="contact-order">Contact</label>
+      <input
+        name="contact-order"
+        type="text"
+        [(ngModel)]="model.contact"
+        #contact="ngModel"
+        required
+        email
+      />
+    </div>
+    <div class="error" *ngIf="contact.errors && myForm.submitted">
+      <span *ngIf="contact.errors?.['required']"
+        >Le champ email est requis</span
+      >
+      <span *ngIf="contact.errors?.['email'] && myForm.submitted"
+        >L'adresse email doit être valide</span
+      >
+    </div>
+  </div>
+
+  <button type="reset">Restaurer</button>
+  <button type="submit">Sauvegarder</button>
+</form>
