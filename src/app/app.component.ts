@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Geoffrey';
+  title: string = 'Raclette party';
+  isThisIngredientVital: boolean = false;
+  displayGuestList: boolean = true;
+  songList: string[] = ['alejandro', 'Ne me quitte pas', 'Le temps est bon'];
+
+  films: string[] = [
+    'The Godfather',
+    'The Shawshank Redemption',
+    'Gone with the wind',
+    'Casablanca',
+  ];
+  showMovies = true;
 }
