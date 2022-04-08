@@ -1,4 +1,4 @@
-import { HighlightFirstDirective } from './highlight-first.directive';
+/* import { HighlightFirstDirective } from './highlight-first.directive';
 
 describe('HighlightFirstDirective', () => {
   it('should create an instance', () => {
@@ -6,3 +6,4 @@ describe('HighlightFirstDirective', () => {
     expect(directive).toBeTruthy();
   });
 });
+ */

@@ -1,3 +1,4 @@
+<h3>Template driven from</h3>
 <form (ngSubmit)="f.valid && handleSubmit(f)" #f="ngForm">
   <div>
     <div>
@@ -63,6 +64,27 @@
       <span *ngIf="mail.errors?.['required']">Le champ email est requis</span>
       <span *ngIf="mail.errors?.['email']"
         >L'adresse email doit être valide</span
+      >
+    </div>
+  </div>
+  <div>
+    <div>
+      <label for="password">Password</label>
+      <input
+        name="password"
+        type="password"
+        [(ngModel)]="user.password"
+        #password="ngModel"
+        required
+        minlength="8"
+      />
+    </div>
+    <div class="error" *ngIf="password.errors && f.submitted">
+      <span *ngIf="password.errors?.['required']"
+        >Le champ password est requis</span
+      >
+      <span *ngIf="password.errors?.['minlength']"
+        >Le champ password doit comporter au moins 8 caractères</span
       >
     </div>
   </div>

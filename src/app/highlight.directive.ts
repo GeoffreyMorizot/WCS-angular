@@ -11,23 +11,18 @@ import {
   selector: '[appHighlight]',
 })
 export class HighlightDirective implements OnInit {
-  constructor(private elRef: ElementRef, private renderer: Renderer2) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
+  @HostBinding('style.background-color')
+  backgroundColor!: string;
+
   @HostListener('mouseenter') mouseEnterEvent(e: Event) {
-    this.renderer.setStyle(
-      this.elRef.nativeElement,
-      'background-color',
-      'yellow'
-    );
+    this.backgroundColor = 'yellow';
   }
 
   @HostListener('mouseleave') mouseLeaveEvent(e: Event) {
-    this.renderer.setStyle(
-      this.elRef.nativeElement,
-      'background-color',
-      'transparent'
-    );
+    this.backgroundColor = 'transparent';
   }
 }

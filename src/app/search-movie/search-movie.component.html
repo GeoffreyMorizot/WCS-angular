@@ -1,0 +1,78 @@
+<form
+  (ngSubmit)="searchMovieForm.valid && handleSubmit()"
+  [formGroup]="searchMovieForm"
+  #myForm="ngForm"
+>
+  <div formGroupName="identifiers">
+    <div>
+      <label for="id">Id</label>
+      <input
+        placeholder="Identifiant du film"
+        type="text"
+        id="id"
+        formControlName="id"
+      />
+    </div>
+
+    <div>
+      <label for="title">Titre</label>
+      <input
+        placeholder="Titre du film"
+        type="text"
+        id="title"
+        formControlName="title"
+      />
+    </div>
+    <div
+      class="error"
+      *ngIf="searchMovieForm.controls['identifiers'].errors?.['isRequired'] && myForm.submitted"
+    >
+      L'un des deux champs 'Identifiant' ou 'Titre' doit être renseigné
+    </div>
+  </div>
+
+  <div class="type">
+    <label for="type">Type</label>
+    <select formControlName="type" id="type">
+      <option *ngFor="let type of types" [ngValue]="type.value">
+        {{ type.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="date">
+    <label for="date">Date</label>
+    <input
+      placeholder="Entrez une date"
+      type="number"
+      id="date"
+      formControlName="release"
+    />
+    <div
+      class="error"
+      *ngIf="searchMovieForm.controls['release'].errors?.['required'] && myForm.submitted"
+    >
+      Date requise
+    </div>
+    <div
+      class="error"
+      *ngIf="searchMovieForm.controls['release'].errors?.['minMax'] && !searchMovieForm.controls['release'].errors?.['required'] && myForm.submitted"
+    >
+      L'année doit être comprise entre
+      {{searchMovieForm.controls['release'].errors?.['minMax'].expected.minDate}}
+      et
+      {{searchMovieForm.controls['release'].errors?.['minMax'].expected.maxDate}}
+    </div>
+  </div>
+
+  <div class="form">
+    <label for="form">Fiche</label>
+    <select formControlName="form" name="form" id="form">
+      <option *ngFor="let form of forms" [ngValue]="form.value">
+        {{ form.name }}
+      </option>
+    </select>
+  </div>
+
+  <button type="submit">Rechercher</button>
+</form>
